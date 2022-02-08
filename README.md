@@ -1,6 +1,19 @@
-# FTOC
-Description of project:
-  	The purpose of this project is to create a 2D game using Python and add ons such as Pygame to supplement level building. The goal is to have a fully functional map of the UWRF campus and have different levels/minigames throughout the game. Each level corresponds to a different class or part of the campus. Each level will vary in gameplay style and difficulty to make for a well rounded and challenging game. We want to have an interactive GUI that the player can use to navigate throughout the game. All documentation and code for the game will be available on our repository on GitHub (FTOC). More information about the game can be found in our outline located on GitHub
+# Freddy Takes on College (FTOC)
 
-Current Progress:
-    Outline created and pushed into repository. Readme file updated.
+## Project Description
+Freddy Takes on College is a 2D game about the University of Wisconsin — River Falls mascot (UWRF), Freddy Falcon. The goal of the game is to help Freddy with his own college experience. The user will navigate a map of the UWRF campus and complete various types of challenges. These challenges will represent different classes or areas of campus. There will be a variety of different levels each with varying difficulty. After completing all the levels, the user has completed the game, meaning Freddy has graduated from college!
+
+## Software 
+It is coded in Python with the help of various modules such as Pygame. Also, Visual Studio Code is being used as our IDE.
+
+## Current Progress
+Currently,  we are getting everything set up to start working on developing our video game. 
+
+Also, we are working on creating a short video that will give an overview of our project, as well as, a walk through of our outline and code at a high-level.
+
+## Want more information?
+See our outline on GitHub for more information about this project.
+
+## Collaborators
+Colton Olson (colt1313) <br />
+Taylor Thornton (Taylor-Thornton)
