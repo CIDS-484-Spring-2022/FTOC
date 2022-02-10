@@ -11,6 +11,9 @@ Currently,  we are getting everything set up to start working on developing our 
 
 Also, we are working on creating a short video that will give an overview of our project, as well as, a walk through of our outline and code at a high-level.
 
+## GameFiles 
+The GameFiles folder contains all of the files needed to run Freddy Takes on College. This contains a subfolder called Assets which will contain all the images or sound effects that are in the game.
+
 ## Want more information?
 See our outline on GitHub for more information about this project.
 
