@@ -15,7 +15,7 @@ Most of the time working was spent on trying to figure out the logic behind ever
 - A character that is able to move and jump with animations
 - Collision detection on the character so they don't go through blocks
 - A sample beginning level to show the user how to play (text to come soon!)
-- A sample start menu that will be updated before the next release
+- The framework for a sample start menu that will be updated before the next release
 
 ## GameFiles 
 The GameFiles folder contains all of the files needed to run Freddy Takes on College. This contains a subfolder called Assets which will contain all the images or sound effects that are in the game.
