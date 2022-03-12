@@ -1,7 +1,7 @@
 # Freddy Takes on College (FTOC)
 
 ## Project Description
-Freddy Takes on College is a 2D platformer game about helping the University of Wisconsin — River Falls mascot (UWRF), Freddy Falcon. The goal of the game is to help Freddy by completing the different levels. There will be different Worlds that have their own Levels of varying difficulty. After completing all the levels, the user has completed the game, and has helped Freddy! The different Worlds will be associated with class while the Levels will represent things like homework, exams, and projects. 
+Freddy Takes on College is a 2D platformer game about helping the University of Wisconsin — River Falls mascot (UWRF), Freddy Falcon. The goal of the game is to help Freddy by completing the different levels. There will be different Worlds that have their own Levels of varying difficulty. After completing all the levels, the user has completed the game, and has helped Freddy! The different Worlds will be associated with classes while the Levels will represent things like homework, exams, and projects. 
 
 ## Software 
 It is coded in Python with the help of various modules such as Pygame. Also, Visual Studio Code is being used as our IDE.
