@@ -7,28 +7,33 @@ import pygame
 
 class Sprite():
     # constructor
-    def __init__(self, x, y, speed, imagePath):
-        self.x = x
-        self.y = y
+    def __init__(self, x, y, speed, imagePath, image_height=80, image_width=40):
         self.speed = speed
-        self.image = pygame.image.load(imagePath)
+        #self.image = pygame.image.load(imagePath)
+        #self.image = pygame.transform.scale(self.image, (image_width, image_height))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
     # setters
     def setX(self, x):
-        self.x = x
+        self.rect.x = x
 
     def setY(self, y):
-        self.y = y
+        self.rect.y = y
 
     def setSpeed(self, speed):
         self.speed = speed
 
+    def changeImg(self, imagePath):
+        self.image = pygame.image.load(imagePath)
+
     # getters
     def getX(self):
-        return self.x
+        return self.rect.x
 
     def getY(self):
-        return self.y
+        return self.rect.y
 
     def getSpeed(self):
         return self.speed
