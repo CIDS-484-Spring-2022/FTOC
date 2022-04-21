@@ -2,9 +2,8 @@
 The file main.py holds the main method for the Freddy Takes on College Game. 
 """
 
-#from game import Game
-
 import pygame
+from game import Game
 import Settings
 import Level_Data
 from Level import Level
@@ -16,20 +15,8 @@ BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WIN
 
 tile_size = 50
 
-#g = Game()
-
-#while g.running:
-    #g.curr_menu.display_menu()
-    #g.game_loop()
-
-g = Game()
-
-while g.running:
-    g.curr_menu.display_menu()
-    g.game_loop()
-
-#WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
-#pygame.display.set_caption("Freddy Takes on College!")
+WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
+pygame.display.set_caption("Freddy Takes on College!")
 
 
 # grid function used only for level making
@@ -45,11 +32,19 @@ def main():
     # GUI/Game code to go here
     clock = pygame.time.Clock()
     run = True
+
+    g = Game()
+
+    while g.running:
+        g.curr_menu.display_menu()
+        if g.levels.start:
+            g.game_loop()
     
     player = Player(100, Settings.WINDOW_HEIGHT-130, 5, 'GameFiles/Assets/character_maleAdventurer_idle.png', 'maleAdventurer')
 
-    #while run:
-        #clock.tick(Settings.FPS)
+"""
+    while run:
+        clock.tick(Settings.FPS)
 
         WIN.blit(BG_IMAGE, (0, 0))
         #draw_grid()
@@ -64,7 +59,7 @@ def main():
         pygame.display.update()
 
     pygame.quit()
-
+"""
 # Make sure main() only runs from this file directly
-#if __name__ == "__main__":
-    #main()
+if __name__ == "__main__":
+    main()
