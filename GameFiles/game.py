@@ -48,21 +48,39 @@ class Game():
     
         player = Player(100, Settings.WINDOW_HEIGHT-130, 5, 'GameFiles/Assets/character_maleAdventurer_idle.png', 'maleAdventurer')
         level_1 = Level(Level_Data.level1, tile_size, WIN)
+        level_2 = Level(Level_Data.level2, tile_size, WIN)
 
-        while run:
-            clock.tick(Settings.FPS)
 
-            WIN.blit(BG_IMAGE, (0, 0))
-            #draw_grid()
-            level_1.draw_level()
-            player.update(WIN, level_1) # hard-coded for now
+        print(self.levels.state)
 
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    run = False
-                
+        if self.levels.state == 'Level1':
 
-            pygame.display.update()
+            while run:
+                clock.tick(Settings.FPS)
+
+                WIN.blit(BG_IMAGE, (0, 0))
+                #draw_grid()
+                level_1.draw_level()
+                player.update(WIN, level_1) # hard-coded for now
+
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        run = False
+                pygame.display.update()
+
+        elif self.levels.state == 'Level2':        
+            while run:
+                clock.tick(Settings.FPS)
+
+                WIN.blit(BG_IMAGE, (0, 0))
+                #draw_grid()
+                level_2.draw_level()
+                player.update(WIN, level_2) # hard-coded for now
+
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        run = False
+                pygame.display.update()
 
         pygame.quit()
 

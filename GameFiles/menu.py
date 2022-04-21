@@ -115,6 +115,12 @@ class LevelSelection(Menu):
         elif self.game.START_KEY:
             if self.state == "Level1":
                 self.game.playing = True
+            elif self.state == "Level2":
+                self.game.playing = True
+            elif self.state == "Level3":
+                self.game.playing = True
+            elif self.state == "Level4":
+                self.game.playing = True
 
     def display_menu(self):
         self.run_display = True
@@ -165,5 +171,15 @@ class LevelSelection(Menu):
             if self.state == 'Level1':
                 self.run_display = False
                 self.start = True
+            elif self.state =='Level2':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level3':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level4':
+                self.run_display = False
+                self.start = True
+
 
 
