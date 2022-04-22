@@ -59,14 +59,13 @@ class MainMenu(Menu):
     def check_input(self):
         self.move_cursor()
         if self.game.START_KEY:
-            if self.state == 'Start':
-                self.game.playing = True
-            elif self.state == 'Controls':
+            if self.state == 'Controls':
                 self.game.curr_menu = self.game.options
+                self.run_display = False
             elif self.state == "Levels":
                 self.game.curr_menu = self.game.levels
-            self.run_display = False
-
+                self.run_display = False
+                
 class ControlsMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
@@ -85,6 +84,11 @@ class ControlsMenu(Menu):
             self.game.draw_text('Up Arrow = Move Up', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+15)
             self.game.draw_text('Down Arrow = Move Down', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+30)
             self.game.draw_text('Game', 30, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+45)
+            self.game.draw_text('Right Arrow = Move Right', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+60)
+            self.game.draw_text('Left Arrow = Move Left', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+75)
+            self.game.draw_text('Space Bar = Jump', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+90)
+            self.game.draw_text('Esc = Main Menu', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+105)
+
 
 
             self.draw_cursor()
@@ -94,7 +98,6 @@ class ControlsMenu(Menu):
         if self.game.BACK_KEY:
             self.game.curr_menu = self.game.main_menu
             self.run_display = False
-
 
 class LevelSelection(Menu):
     def __init__(self, game):
@@ -137,8 +140,6 @@ class LevelSelection(Menu):
             self.game.draw_text('Level 4', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+90)
             self.draw_cursor()
             self.blit_screen()
-            #this is where you would add our game levels
-
 
     def move_cursor(self):
         if self.game.DOWN_KEY:
