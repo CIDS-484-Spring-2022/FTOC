@@ -24,7 +24,7 @@ class Game():
         pygame.init()
         self.running = True
         self.playing = False
-        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
+        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY, self.ESCAPE_KEY = False, False, False, False, False
         self.display = pygame.Surface((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
         self.window = pygame.display.set_mode(((Settings.WINDOW_WIDTH,Settings.WINDOW_HEIGHT)))
         self.font_name = pygame.font.Font("GameFiles/Assets/ARCADECLASSIC.TTF", 16)
@@ -44,18 +44,18 @@ class Game():
 
         # GUI/Game code to go here
         clock = pygame.time.Clock()
-        run = True
+        self.playing = True
     
         player = Player(100, Settings.WINDOW_HEIGHT-130, 5, 'GameFiles/Assets/character_maleAdventurer_idle.png', 'maleAdventurer')
         level_1 = Level(Level_Data.level1, tile_size, WIN)
         level_2 = Level(Level_Data.level2, tile_size, WIN)
+        level_3 = Level(Level_Data.level3, tile_size, WIN)
+        level_4 = Level(Level_Data.level4, tile_size, WIN)
 
 
-        print(self.levels.state)
 
         if self.levels.state == 'Level1':
-
-            while run:
+            while self.playing:
                 clock.tick(Settings.FPS)
 
                 WIN.blit(BG_IMAGE, (0, 0))
@@ -63,13 +63,17 @@ class Game():
                 level_1.draw_level()
                 player.update(WIN, level_1) # hard-coded for now
 
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        run = False
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
                 pygame.display.update()
 
         elif self.levels.state == 'Level2':        
-            while run:
+            while self.playing:
                 clock.tick(Settings.FPS)
 
                 WIN.blit(BG_IMAGE, (0, 0))
@@ -77,27 +81,60 @@ class Game():
                 level_2.draw_level()
                 player.update(WIN, level_2) # hard-coded for now
 
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        run = False
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
+                pygame.display.update()
+        elif self.levels.state == 'Level3':        
+            while self.playing:
+                clock.tick(Settings.FPS)
+
+                WIN.blit(BG_IMAGE, (0, 0))
+                #draw_grid()
+                level_3.draw_level()
+                player.update(WIN, level_3) # hard-coded for now
+
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
+                pygame.display.update()
+        elif self.levels.state == 'Level4':        
+            while self.playing:
+                clock.tick(Settings.FPS)
+
+                WIN.blit(BG_IMAGE, (0, 0))
+                #draw_grid()
+                level_4.draw_level()
+                player.update(WIN, level_4) # hard-coded for now
+
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
                 pygame.display.update()
 
-        pygame.quit()
-
-    """
-        while self.playing:
-            self.check_events()
-            #this is where you would add our game levels
-            self.window.blit(self.display, (0,0))
-            pygame.display.update()
-            self.reset_keys()
-    """
+        #pygame.quit()
+        
+        #self.curr_menu.display_menu()
 
     def check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
                 self.curr_menu.run_display = False
+            if event.type == pygame.K_ESCAPE:
+                self.ESCAPE_KEY = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
