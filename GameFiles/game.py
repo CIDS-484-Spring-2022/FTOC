@@ -51,6 +51,10 @@ class Game():
         level_2 = Level(Level_Data.level2, tile_size, WIN)
         level_3 = Level(Level_Data.level3, tile_size, WIN)
         level_4 = Level(Level_Data.level4, tile_size, WIN)
+        level_5 = Level(Level_Data.level5, tile_size, WIN)
+        level_6 = Level(Level_Data.level6, tile_size, WIN)
+
+        #enemy_group = Level.enemy_group
 
 
 
@@ -114,6 +118,40 @@ class Game():
                 #draw_grid()
                 level_4.draw_level()
                 player.update(WIN, level_4) # hard-coded for now
+
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
+                pygame.display.update()
+        elif self.levels.state == 'Level5':        
+            while self.playing:
+                clock.tick(Settings.FPS)
+
+                WIN.blit(BG_IMAGE, (0, 0))
+                #draw_grid()
+                level_5.draw_level()
+                player.update(WIN, level_5) # hard-coded for now
+
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
+                pygame.display.update()
+        elif self.levels.state == 'Level6':        
+            while self.playing:
+                clock.tick(Settings.FPS)
+
+                WIN.blit(BG_IMAGE, (0, 0))
+                #draw_grid()
+                level_6.draw_level()
+                player.update(WIN, level_6) # hard-coded for now
 
                 self.check_events()
 

@@ -1,5 +1,6 @@
 import pygame
 import Settings
+from Enemy import Enemy
 
 class Level():
 
@@ -8,10 +9,17 @@ class Level():
         self.tile_size = tile_size
         self.window = window
         self.tile_list = []
+        self.enemy_group = pygame.sprite.Group()
 
         # load images (hard-coded for now but will change as we update the game)
         dirt_img = pygame.image.load('GameFiles/Assets/grassCenter.png')
         grass_img = pygame.image.load('GameFiles/Assets/grassMid.png')
+        leftHalfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfLeft.png')
+        halfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfMid.png')
+        rightHalfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfRight.png')
+        halfStone_img = pygame.image.load('GameFiles/Assets/stoneHalfMid.png')
+    
+        #slime_img = pygame.image.load('GameFiles/Assets/slimeWalk1.png')
 
         # read level_data and put correct image and coordinates into a tile (temporarily hard-coded)
         row_num = 0
@@ -32,6 +40,41 @@ class Level():
                     img_rect.y = row_num * tile_size
                     tile = (img, img_rect)
                     self.tile_list.append(tile)
+                if tile == 3:
+                    img = pygame.transform.scale(leftHalfGrass_img, (tile_size, tile_size))
+                    img_rect = img.get_rect()
+                    img_rect.x = col_num * tile_size
+                    img_rect.y = row_num * tile_size
+                    tile = (img, img_rect)
+                    self.tile_list.append(tile)
+                if tile == 4:
+                    img = pygame.transform.scale(halfGrass_img, (tile_size, tile_size))
+                    img_rect = img.get_rect()
+                    img_rect.x = col_num * tile_size
+                    img_rect.y = row_num * tile_size
+                    tile = (img, img_rect)
+                    self.tile_list.append(tile)
+                if tile == 5:
+                    img = pygame.transform.scale(rightHalfGrass_img, (tile_size, tile_size))
+                    img_rect = img.get_rect()
+                    img_rect.x = col_num * tile_size
+                    img_rect.y = row_num * tile_size
+                    tile = (img, img_rect)
+                    self.tile_list.append(tile)
+                if tile == 6:
+                    img = pygame.transform.scale(halfStone_img, (tile_size, tile_size))
+                    img_rect = img.get_rect()
+                    img_rect.x = col_num * tile_size
+                    img_rect.y = row_num * tile_size
+                    tile = (img, img_rect)
+                    self.tile_list.append(tile)
+                # Work in Progress
+                if(tile == 10):
+                    enemy = Enemy(col_num * tile_size, row_num * tile_size)
+                    #self.enemy_group.add(enemy)
+                
+
+
                 col_num += 1
             row_num += 1
             
