@@ -1,6 +1,7 @@
 import pygame
 import Settings
 from Enemy import Enemy
+from Lava import Lava
 
 class Level():
 
@@ -10,6 +11,7 @@ class Level():
         self.window = window
         self.tile_list = []
         self.enemy_group = pygame.sprite.Group()
+        self.lava_group = pygame.sprite.Group()
 
         # load images (hard-coded for now but will change as we update the game)
         dirt_img = pygame.image.load('GameFiles/Assets/grassCenter.png')
@@ -68,10 +70,13 @@ class Level():
                     img_rect.y = row_num * tile_size
                     tile = (img, img_rect)
                     self.tile_list.append(tile)
+                if tile == 7:
+                    lava = Lava(col_num * tile_size, row_num * tile_size + (tile_size // 2))
+                    self.lava_group.add(lava)
                 # Work in Progress
                 if(tile == 10):
-                    enemy = Enemy(col_num * tile_size, row_num * tile_size)
-                    #self.enemy_group.add(enemy)
+                    enemy = Enemy(col_num * tile_size, row_num * tile_size + 27)
+                    self.enemy_group.add(enemy)
                 
 
 
@@ -87,3 +92,9 @@ class Level():
         for tile in self.tile_list:
             list.append(tile[0], tile[1])
         return list
+
+    def get_EnemyGroup(self):
+        return self.enemy_group
+
+    def get_LavaGroup(self):
+        return self.lava_group

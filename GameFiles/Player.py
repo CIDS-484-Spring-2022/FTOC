@@ -44,6 +44,9 @@ class Player(Sprite):
         self.jumping = False
         self.direction = 0 # positive value means moving right while negative means left
     
+    def update_CurrentLevel(self, level: Level):
+        self.currentLevel = level
+
     def update(self, window, level: Level):
         # local variables
         dx = 0
@@ -122,15 +125,18 @@ class Player(Sprite):
                 elif self.vel_y >= 0:
                     dy = tile[1].top - self.rect.bottom
                     self.vel_y = 0
+
+        # check for enemy collision
+        if pygame.sprite.spritecollide(self, Level.get_EnemyGroup(self.currentLevel), False):
+            Settings.GAME_OVER = -1
+
+        # check for lava collision 
+        if pygame.sprite.spritecollide(self, Level.get_LavaGroup(self.currentLevel), False):
+            Settings.GAME_OVER = -1
             
         # update coordinates
         self.rect.x += dx
         self.rect.y += dy
-
-        # temporary
-        if self.rect.bottom > Settings.WINDOW_HEIGHT:
-            self.rect.bottom = Settings.WINDOW_HEIGHT
-            dy = 0
 
         # handle falling back onto the ground after jumping
         if dy == 0 and (self.direction == 1 or self.direction == 0) and self.jumping == True:
