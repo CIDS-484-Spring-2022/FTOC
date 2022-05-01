@@ -53,6 +53,7 @@ class Player(Sprite):
         # get key presses
         key = pygame.key.get_pressed()
 
+        # handle jumping
         if key[pygame.K_SPACE] and self.jumping == False:
             self.vel_y = -15
             self.jumping = True
@@ -60,16 +61,19 @@ class Player(Sprite):
         if key[pygame.K_SPACE] == False:
             self.jumping = False
 
+        # handle moving left
         if key[pygame.K_LEFT]:
             dx -= 5
             self.counter += 1
             self.direction = -1
 
+        # handle moving right
         if key[pygame.K_RIGHT]:
             dx += 5
             self.counter += 1
             self.direction = 1
         
+        # handle no movement
         if key[pygame.K_LEFT] == False and key[pygame.K_RIGHT] == False and key[pygame.K_SPACE] == False:
             self.counter = 0
             self.index = 0
@@ -119,7 +123,6 @@ class Player(Sprite):
                     dy = tile[1].top - self.rect.bottom
                     self.vel_y = 0
             
-
         # update coordinates
         self.rect.x += dx
         self.rect.y += dy

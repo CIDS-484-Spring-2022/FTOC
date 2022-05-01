@@ -108,6 +108,8 @@ class LevelSelection(Menu):
         self.level2x, self.level2y = self.mid_w, self.mid_h + 50
         self.level3x, self.level3y = self.mid_w, self.mid_h + 70
         self.level4x, self.level4y = self.mid_w, self.mid_h + 90
+        self.level5x, self.level5y = self.mid_w, self.mid_h + 110
+        self.level6x, self.level6y = self.mid_w, self.mid_h + 130
         self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
 
     def check_input(self):
@@ -124,6 +126,10 @@ class LevelSelection(Menu):
                 self.game.playing = True
             elif self.state == "Level4":
                 self.game.playing = True
+            elif self.state == "Level5":
+                self.game.playing = True
+            elif self.state == "Level6":
+                self.game.playing = True
 
     def display_menu(self):
         self.run_display = True
@@ -138,6 +144,8 @@ class LevelSelection(Menu):
             self.game.draw_text('Level 2', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+50)
             self.game.draw_text('Level 3', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+70)
             self.game.draw_text('Level 4', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+90)
+            self.game.draw_text('Level 5', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+110)
+            self.game.draw_text('Level 6', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+130)
             self.draw_cursor()
             self.blit_screen()
 
@@ -153,21 +161,35 @@ class LevelSelection(Menu):
                 self.cursor_rect.midtop = (self.level4x + self.offset, self.level4y)
                 self.state = 'Level4'
             elif self.state == 'Level4':
+                self.cursor_rect.midtop = (self.level5x + self.offset, self.level5y)
+                self.state = 'Level5'
+            elif self.state == 'Level5':
+                self.cursor_rect.midtop = (self.level6x + self.offset, self.level6y)
+                self.state = 'Level6'
+            elif self.state == 'Level6':
                 self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
                 self.state = 'Level1'
+
         elif self.game.UP_KEY:
             if self.state == 'Level1':
-                self.cursor_rect.midtop = (self.level4x + self.offset, self.level4y)
-                self.state = 'Level4'
+                self.cursor_rect.midtop = (self.level6x + self.offset, self.level6y)
+                self.state = 'Level6'
             elif self.state == 'Level2':
-                self.cursor_rect.midtop = (self.level3x + self.offset, self.level3y)
-                self.state = 'Level3'
-            elif self.state == 'Level3':
-                self.cursor_rect.midtop = (self.level2x + self.offset, self.level2y)
-                self.state = 'Level4'
-            elif self.state == 'Level4':
                 self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
                 self.state = 'Level1'
+            elif self.state == 'Level3':
+                self.cursor_rect.midtop = (self.level2x + self.offset, self.level2y)
+                self.state = 'Level2'
+            elif self.state == 'Level4':
+                self.cursor_rect.midtop = (self.level3x + self.offset, self.level3y)
+                self.state = 'Level3'
+            elif self.state == 'Level5':
+                self.cursor_rect.midtop = (self.level4x + self.offset, self.level4y)
+                self.state = 'Level4'
+            elif self.state == 'Level6':
+                self.cursor_rect.midtop = (self.level5x + self.offset, self.level5y)
+                self.state = 'Level5'
+
         elif self.game.START_KEY:
             if self.state == 'Level1':
                 self.run_display = False
@@ -179,6 +201,12 @@ class LevelSelection(Menu):
                 self.run_display = False
                 self.start = True
             elif self.state == 'Level4':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level5':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level6':
                 self.run_display = False
                 self.start = True
 
