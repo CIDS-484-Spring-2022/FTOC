@@ -2,6 +2,8 @@ import pygame
 import Settings
 from Enemy import Enemy
 from Lava import Lava
+from Exit import Exit
+from Platform import Platform
 
 class Level():
 
@@ -12,6 +14,8 @@ class Level():
         self.tile_list = []
         self.enemy_group = pygame.sprite.Group()
         self.lava_group = pygame.sprite.Group()
+        self.exit_group = pygame.sprite.Group()
+        self.platform_group = pygame.sprite.Group()
 
         # load images (hard-coded for now but will change as we update the game)
         dirt_img = pygame.image.load('GameFiles/Assets/grassCenter.png')
@@ -73,8 +77,19 @@ class Level():
                 if tile == 7:
                     lava = Lava(col_num * tile_size, row_num * tile_size + (tile_size // 2))
                     self.lava_group.add(lava)
+                if tile == 8:
+                    exit = Exit(col_num * tile_size, row_num * tile_size - (tile_size // 2))
+                    self.exit_group.add(exit)
+                # horizontal moving platform
+                if tile == 9:
+                    platform = Platform(col_num * tile_size, row_num * tile_size, 1, 0)
+                    self.platform_group.add(platform)
+                # vertical moving platform
+                if tile == 10:
+                    platform = Platform(col_num * tile_size, row_num * tile_size, 0, 1)
+                    self.platform_group.add(platform)
                 # Work in Progress
-                if(tile == 10):
+                if(tile == 11):
                     enemy = Enemy(col_num * tile_size, row_num * tile_size + 27)
                     self.enemy_group.add(enemy)
                 
@@ -98,3 +113,9 @@ class Level():
 
     def get_LavaGroup(self):
         return self.lava_group
+
+    def get_ExitGroup(self):
+        return self.exit_group
+
+    def get_PlatformGroup(self):
+        return self.platform_group

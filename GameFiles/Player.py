@@ -52,6 +52,7 @@ class Player(Sprite):
         dx = 0
         dy = 0 
         walking_cooldown = 5
+        collision_threshold = 20
 
         # get key presses
         key = pygame.key.get_pressed()
@@ -109,7 +110,6 @@ class Player(Sprite):
             self.image = self.jump_left
 
         # check for collision
-        tile_list = level.tile_list
         for tile in level.tile_list:
             # check for collison in x direction
             if tile[1].colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
@@ -133,7 +133,27 @@ class Player(Sprite):
         # check for lava collision 
         if pygame.sprite.spritecollide(self, Level.get_LavaGroup(self.currentLevel), False):
             Settings.GAME_OVER = -1
+
+        # check for moving platform collision
+        for platform in Level.get_PlatformGroup(self.currentLevel):
             
+            # collision in x direction
+            if platform.rect.colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
+                dx = 0
+
+            # collision in y direction
+            if platform.rect.colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
+
+                # check if below platform
+                if abs((self.rect.top + dy) - platform.rect.bottom) < collision_threshold:
+                    self.vel_y = 0
+                    dy = platform.rect.bottom - self.rect.top
+
+                # check if above platform
+                elif abs((self.rect.bottom + dy) - platform.rect.top) < collision_threshold:
+                    self.rect.bottom = platform.rect.top - 1
+                    dy = 0
+
         # update coordinates
         self.rect.x += dx
         self.rect.y += dy

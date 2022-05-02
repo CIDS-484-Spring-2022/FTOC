@@ -70,8 +70,16 @@ class Game():
                 enemy_group.update()
                 enemy_group.draw(WIN)
 
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_1)
+                platform_group.update()
+                platform_group.draw(WIN)
+
                 # LAVA
                 Level.get_LavaGroup(level_1).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_1).draw(WIN)
 
                 player.update(WIN, level_1) # hard-coded for now
 
@@ -100,8 +108,16 @@ class Game():
                 enemy_group.update()
                 enemy_group.draw(WIN)
 
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_2)
+                platform_group.update()
+                platform_group.draw(WIN)
+
                  # LAVA
                 Level.get_LavaGroup(level_2).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_2).draw(WIN)
 
                 player.update(WIN, level_2) # hard-coded for now
 
@@ -127,8 +143,16 @@ class Game():
                 enemy_group.update()
                 enemy_group.draw(WIN)
 
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_3)
+                platform_group.update()
+                platform_group.draw(WIN)
+
                  # LAVA
                 Level.get_LavaGroup(level_3).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_3).draw(WIN)
 
                 player.update(WIN, level_3) # hard-coded for now
 
@@ -154,8 +178,16 @@ class Game():
                 enemy_group.update()
                 enemy_group.draw(WIN)
 
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_4)
+                platform_group.update()
+                platform_group.draw(WIN)
+
                  # LAVA
                 Level.get_LavaGroup(level_4).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_4).draw(WIN)
 
                 player.update(WIN, level_4) # hard-coded for now
 
@@ -181,8 +213,16 @@ class Game():
                 enemy_group.update()
                 enemy_group.draw(WIN)
 
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_5)
+                platform_group.update()
+                platform_group.draw(WIN)
+
                  # LAVA
                 Level.get_LavaGroup(level_5).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_5).draw(WIN)
 
                 player.update(WIN, level_5) # hard-coded for now
 
@@ -208,8 +248,16 @@ class Game():
                 enemy_group.update()
                 enemy_group.draw(WIN)
 
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_6)
+                platform_group.update()
+                platform_group.draw(WIN)
+
                  # LAVA
                 Level.get_LavaGroup(level_6).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_6).draw(WIN)
 
                 player.update(WIN, level_6) # hard-coded for now
 
