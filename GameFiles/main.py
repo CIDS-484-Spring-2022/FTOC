@@ -1,5 +1,5 @@
 """
-The file main.py holds the main method for the Freddy Takes on College Game. 
+The file main.py holds the main method for the 'Lost in the Mountains' Game. 
 """
 
 import pygame

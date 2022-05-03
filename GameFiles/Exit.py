@@ -1,4 +1,9 @@
-from tkinter import image_types
+"""
+The file Exit.py holds the Exit class for the 'Lost in the Mountains' game. This class is responsible for setting the image, 
+scaling the image, and creating a rectangle with x and y values to be used in collision detection with the player for the exit
+doors. 
+"""
+
 import pygame
 
 class Exit(pygame.sprite.Sprite):

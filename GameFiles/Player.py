@@ -1,20 +1,25 @@
+"""
+The file Player.py represents the character that the user will control during the game. It handles loading in various images
+that are used for the player as well as drawing the player onto the screen. Also, it handles collision between tiles and other 
+elements the user may interact with. Also, there are methods to handle user input for moving the player around the levels
+"""
+
 import Settings
 import pygame
-from Sprite import Sprite
 from Level import Level
 
-# the Player class inherits from the Sprite class
 class Player():
 
     # constructor
-    # instead of image path do character name and then do it that way so you load all the images and animation images
-    # hard-coded for now but will change as this was temporary to figure out the correct logic
-    def __init__(self, x, y, speed, image_height=80, image_width=40):
+    def __init__(self, x, y, image_height=80, image_width=40):
+
+        # variables used in player animation
         self.images_right = [] 
         self.images_left = []
         self.index = 0 
         self.counter = 0
 
+        # load in the images for when the player is walking
         for num in range(0, 8):
             img = pygame.image.load(f'GameFiles/Assets/character_femaleAdventurer_walk{num}.png')
             img_right = pygame.transform.scale(img, (image_width, image_height))
@@ -22,9 +27,11 @@ class Player():
             self.images_right.append(img_right)
             self.images_left.append(img_left)
 
+        # load image for when the player is idle
         self.idle_image = pygame.image.load('GameFiles/Assets/character_femaleAdventurer_idle.png')
         self.idle_image = pygame.transform.scale(self.idle_image, (image_width, image_height))
 
+        # load image for when the player jumps
         self.jump_right = pygame.image.load('GameFiles/Assets/character_femaleAdventurer_jump.png')
         self.jump_right = pygame.transform.scale(self.jump_right, (image_width, image_height))
         self.jump_left = pygame.transform.flip(self.jump_right, True, False)
@@ -33,7 +40,10 @@ class Player():
         #self.fall_right = pygame.transform.scale(self.fall_right, (image_width, image_height))
         #self.fall_left = pygame.transform.flip(self.fall_right, True, False) 
 
+        # set starter image to idle
         self.image = self.idle_image
+
+        # create a rectangle around the player for use in collision detection
         self.rect = self.image.get_rect()
         self.width = self.image.get_width()
         self.height = self.image.get_height()
@@ -41,12 +51,18 @@ class Player():
         self.rect.x = x
         self.rect.y = y
         self.vel_y = 0
+
+        # variables to detect whether the player is jumping or in the air
         self.jumping = False
-        self.direction = 0 # positive value means moving right while negative means left
+
+        # variable that represents which direction the player is moving (positive value means moving right while negative means left)
+        self.direction = 0 
     
+    # Method to set the current level the player is on
     def update_CurrentLevel(self, level: Level):
         self.currentLevel = level
 
+    # method that updates the player as the user interacts with the level
     def update(self, window, level: Level):
         # local variables
         dx = 0

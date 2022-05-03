@@ -13,7 +13,7 @@ BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WIN
 tile_size = 50
 
 WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
-pygame.display.set_caption("Freddy Takes on College!")
+pygame.display.set_caption("Lost in the Mountains!")
 
 
 
@@ -42,11 +42,10 @@ class Game():
 
     def game_loop(self):
 
-        # GUI/Game code to go here
         clock = pygame.time.Clock()
         self.playing = True
     
-        player = Player(100, Settings.WINDOW_HEIGHT-130, 5)
+        player = Player(100, Settings.WINDOW_HEIGHT-130)
         level_1 = Level(Level_Data.level1, tile_size, WIN)
         level_2 = Level(Level_Data.level2, tile_size, WIN)
         level_3 = Level(Level_Data.level3, tile_size, WIN)
@@ -81,7 +80,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_1).draw(WIN)
 
-                player.update(WIN, level_1) # hard-coded for now
+                player.update(WIN, level_1) 
 
                 
 
@@ -119,7 +118,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_2).draw(WIN)
 
-                player.update(WIN, level_2) # hard-coded for now
+                player.update(WIN, level_2) 
 
                 self.check_events()
 
@@ -154,7 +153,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_3).draw(WIN)
 
-                player.update(WIN, level_3) # hard-coded for now
+                player.update(WIN, level_3) 
 
                 self.check_events()
 
@@ -189,7 +188,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_4).draw(WIN)
 
-                player.update(WIN, level_4) # hard-coded for now
+                player.update(WIN, level_4) 
 
                 self.check_events()
 
@@ -224,7 +223,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_5).draw(WIN)
 
-                player.update(WIN, level_5) # hard-coded for now
+                player.update(WIN, level_5) 
 
                 self.check_events()
 
@@ -259,7 +258,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_6).draw(WIN)
 
-                player.update(WIN, level_6) # hard-coded for now
+                player.update(WIN, level_6) 
 
                 self.check_events()
 

@@ -1,4 +1,7 @@
-# data for the various levels
+"""
+The file Level_Data.py holds the data for the levels in the 'Lost in the Mountains' game. 
+"""
+
 level1 = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 

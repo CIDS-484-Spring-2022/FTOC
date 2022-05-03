@@ -24,7 +24,7 @@ class MainMenu(Menu):
         self.levelsx, self.levelsy = self.mid_w, self.mid_h + 30
         self.optionsx, self.optionsy = self.mid_w, self.mid_h + 50
         self.cursor_rect.midtop = (self.levelsx + self.offset, self.levelsy)
-        pygame.display.set_caption("FTOC")
+        pygame.display.set_caption("Lost in the Mountains")
 
 
     def display_menu(self):
@@ -33,7 +33,7 @@ class MainMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Freddy Takes on College!', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 20)
+            self.game.draw_text('Lost in the Mountains!', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 20)
             self.game.draw_text("Level Selection", 20, self.levelsx, self.levelsy)
             self.game.draw_text("Controls", 20, self.optionsx, self.optionsy)
             self.draw_cursor()
