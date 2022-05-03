@@ -54,9 +54,7 @@ class Game():
         level_5 = Level(Level_Data.level5, tile_size, WIN)
         level_6 = Level(Level_Data.level6, tile_size, WIN)
 
-        #enemy_group = Level.enemy_group
-
-
+        player.update_CurrentLevel(level_1)
 
         if self.levels.state == 'Level1':
             while self.playing:
@@ -65,7 +63,27 @@ class Game():
                 WIN.blit(BG_IMAGE, (0, 0))
                 #draw_grid()
                 level_1.draw_level()
+                player.update_CurrentLevel(level_1)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_1)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_1)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                # LAVA
+                Level.get_LavaGroup(level_1).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_1).draw(WIN)
+
                 player.update(WIN, level_1) # hard-coded for now
+
+                
 
                 self.check_events()
 
@@ -83,6 +101,24 @@ class Game():
                 WIN.blit(BG_IMAGE, (0, 0))
                 #draw_grid()
                 level_2.draw_level()
+                player.update_CurrentLevel(level_2)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_2)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_2)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                 # LAVA
+                Level.get_LavaGroup(level_2).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_2).draw(WIN)
+
                 player.update(WIN, level_2) # hard-coded for now
 
                 self.check_events()
@@ -100,6 +136,24 @@ class Game():
                 WIN.blit(BG_IMAGE, (0, 0))
                 #draw_grid()
                 level_3.draw_level()
+                player.update_CurrentLevel(level_3)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_3)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_3)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                 # LAVA
+                Level.get_LavaGroup(level_3).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_3).draw(WIN)
+
                 player.update(WIN, level_3) # hard-coded for now
 
                 self.check_events()
@@ -117,6 +171,24 @@ class Game():
                 WIN.blit(BG_IMAGE, (0, 0))
                 #draw_grid()
                 level_4.draw_level()
+                player.update_CurrentLevel(level_4)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_4)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_4)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                 # LAVA
+                Level.get_LavaGroup(level_4).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_4).draw(WIN)
+
                 player.update(WIN, level_4) # hard-coded for now
 
                 self.check_events()
@@ -134,6 +206,24 @@ class Game():
                 WIN.blit(BG_IMAGE, (0, 0))
                 #draw_grid()
                 level_5.draw_level()
+                player.update_CurrentLevel(level_5)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_5)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_5)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                 # LAVA
+                Level.get_LavaGroup(level_5).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_5).draw(WIN)
+
                 player.update(WIN, level_5) # hard-coded for now
 
                 self.check_events()
@@ -151,6 +241,24 @@ class Game():
                 WIN.blit(BG_IMAGE, (0, 0))
                 #draw_grid()
                 level_6.draw_level()
+                player.update_CurrentLevel(level_6)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_6)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_6)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                 # LAVA
+                Level.get_LavaGroup(level_6).draw(WIN)
+
+                # EXIT
+                Level.get_ExitGroup(level_6).draw(WIN)
+
                 player.update(WIN, level_6) # hard-coded for now
 
                 self.check_events()
