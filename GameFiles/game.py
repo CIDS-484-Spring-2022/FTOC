@@ -46,7 +46,7 @@ class Game():
         clock = pygame.time.Clock()
         self.playing = True
     
-        player = Player(100, Settings.WINDOW_HEIGHT-130, 5, 'GameFiles/Assets/character_maleAdventurer_idle.png', 'maleAdventurer')
+        player = Player(100, Settings.WINDOW_HEIGHT-130, 5)
         level_1 = Level(Level_Data.level1, tile_size, WIN)
         level_2 = Level(Level_Data.level2, tile_size, WIN)
         level_3 = Level(Level_Data.level3, tile_size, WIN)

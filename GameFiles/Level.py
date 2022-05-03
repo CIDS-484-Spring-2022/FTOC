@@ -24,8 +24,6 @@ class Level():
         halfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfMid.png')
         rightHalfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfRight.png')
         halfStone_img = pygame.image.load('GameFiles/Assets/stoneHalfMid.png')
-    
-        #slime_img = pygame.image.load('GameFiles/Assets/slimeWalk1.png')
 
         # read level_data and put correct image and coordinates into a tile (temporarily hard-coded)
         row_num = 0
