@@ -17,15 +17,14 @@ class Level():
         self.exit_group = pygame.sprite.Group()
         self.platform_group = pygame.sprite.Group()
 
-        # load images (hard-coded for now but will change as we update the game)
+        # load images 
         dirt_img = pygame.image.load('GameFiles/Assets/grassCenter.png')
         grass_img = pygame.image.load('GameFiles/Assets/grassMid.png')
         leftHalfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfLeft.png')
         halfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfMid.png')
         rightHalfGrass_img = pygame.image.load('GameFiles/Assets/grassHalfRight.png')
-        halfStone_img = pygame.image.load('GameFiles/Assets/stoneHalfMid.png')
 
-        # read level_data and put correct image and coordinates into a tile (temporarily hard-coded)
+        # read level_data and put correct image and coordinates into a tile
         row_num = 0
         for row in level_data:
             col_num = 0
@@ -66,33 +65,23 @@ class Level():
                     tile = (img, img_rect)
                     self.tile_list.append(tile)
                 if tile == 6:
-                    img = pygame.transform.scale(halfStone_img, (tile_size, tile_size))
-                    img_rect = img.get_rect()
-                    img_rect.x = col_num * tile_size
-                    img_rect.y = row_num * tile_size
-                    tile = (img, img_rect)
-                    self.tile_list.append(tile)
-                if tile == 7:
                     lava = Lava(col_num * tile_size, row_num * tile_size + (tile_size // 2))
                     self.lava_group.add(lava)
-                if tile == 8:
+                if tile == 7:
                     exit = Exit(col_num * tile_size, row_num * tile_size - (tile_size // 2))
                     self.exit_group.add(exit)
                 # horizontal moving platform
-                if tile == 9:
+                if tile == 8:
                     platform = Platform(col_num * tile_size, row_num * tile_size, 1, 0)
                     self.platform_group.add(platform)
                 # vertical moving platform
-                if tile == 10:
+                if tile == 9:
                     platform = Platform(col_num * tile_size, row_num * tile_size, 0, 1)
                     self.platform_group.add(platform)
-                # Work in Progress
-                if(tile == 11):
+                if(tile == 10):
                     enemy = Enemy(col_num * tile_size, row_num * tile_size + 27)
                     self.enemy_group.add(enemy)
                 
-
-
                 col_num += 1
             row_num += 1
             
