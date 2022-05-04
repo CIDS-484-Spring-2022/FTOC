@@ -296,7 +296,7 @@ class Game():
 
     def draw_text(self, text, size, x, y):
         font = pygame.font.Font("GameFiles/Assets/ARCADECLASSIC.TTF", size)
-        text_surface = font.render(text, True, self.WHITE)
+        text_surface = font.render(text, True, self.BLACK)
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
         self.display.blit(text_surface, text_rect)
