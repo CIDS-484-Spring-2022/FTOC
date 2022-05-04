@@ -1,5 +1,5 @@
 """
-The Settings.py file contains some common constants that will be used in the Freddy Takes on College Game
+The Settings.py file contains some common constants that will be used in the 'Lost in the Mountains' Game
 """
 
 import pygame
@@ -9,6 +9,10 @@ WINDOW_WIDTH = 1000
 
 FPS = 60
 
-TEST_BG_COLOR = (129, 133, 137) # No longer needed but keep for now just in case
-
 GAME_OVER = 0
+
+TILE_SIZE = 50
+
+GAME_BG = pygame.transform.scale(pygame.image.load('GameFiles/Assets/GreenHillsBG.png'), (WINDOW_WIDTH, WINDOW_HEIGHT))
+
+MENU_BG = pygame.transform.scale(pygame.image.load('GameFiles/Assets/menuBackground.png'), (WINDOW_WIDTH, WINDOW_HEIGHT))

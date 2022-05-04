@@ -7,13 +7,14 @@ from Level import Level
 from Player import Player
 
 mAdventurerPath = ""
-BG_IMAGE = pygame.image.load('GameFiles/Assets/GreenHillsBG.png')
-BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
+#BG_IMAGE = pygame.image.load('GameFiles/Assets/GreenHillsBG.png')
+#BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
 
-tile_size = 50
+#tile_size = 50
 
 WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
-pygame.display.set_caption("Freddy Takes on College!")
+pygame.display.set_caption("Lost in the Mountains!")
+
 
 
 
@@ -35,24 +36,23 @@ class Game():
         self.curr_menu = self.main_menu
 
     def draw_grid():
-        for line in range(0, (int(Settings.WINDOW_HEIGHT/tile_size))):
-            pygame.draw.line(WIN, (255, 255, 255), (0, line * tile_size), (Settings.WINDOW_WIDTH, line * tile_size))
-        for line in range(0, (int(Settings.WINDOW_WIDTH/tile_size))):
-            pygame.draw.line(WIN, (255, 255, 255), (line * tile_size, 0), (line * tile_size, Settings.WINDOW_HEIGHT))
+        for line in range(0, (int(Settings.WINDOW_HEIGHT/Settings.TILE_SIZE))):
+            pygame.draw.line(WIN, (255, 255, 255), (0, line * Settings.TILE_SIZE), (Settings.WINDOW_WIDTH, line * Settings.TILE_SIZE))
+        for line in range(0, (int(Settings.WINDOW_WIDTH/Settings.TILE_SIZE))):
+            pygame.draw.line(WIN, (255, 255, 255), (line * Settings.TILE_SIZE, 0), (line * Settings.TILE_SIZE, Settings.WINDOW_HEIGHT))
 
     def game_loop(self):
 
-        # GUI/Game code to go here
         clock = pygame.time.Clock()
         self.playing = True
     
-        player = Player(100, Settings.WINDOW_HEIGHT-130, 5, 'GameFiles/Assets/character_maleAdventurer_idle.png', 'maleAdventurer')
-        level_1 = Level(Level_Data.level1, tile_size, WIN)
-        level_2 = Level(Level_Data.level2, tile_size, WIN)
-        level_3 = Level(Level_Data.level3, tile_size, WIN)
-        level_4 = Level(Level_Data.level4, tile_size, WIN)
-        level_5 = Level(Level_Data.level5, tile_size, WIN)
-        level_6 = Level(Level_Data.level6, tile_size, WIN)
+        player = Player(100, Settings.WINDOW_HEIGHT-130)
+        level_1 = Level(Level_Data.level1, Settings.TILE_SIZE, WIN)
+        level_2 = Level(Level_Data.level2, Settings.TILE_SIZE, WIN)
+        level_3 = Level(Level_Data.level3, Settings.TILE_SIZE, WIN)
+        level_4 = Level(Level_Data.level4, Settings.TILE_SIZE, WIN)
+        level_5 = Level(Level_Data.level5, Settings.TILE_SIZE, WIN)
+        level_6 = Level(Level_Data.level6, Settings.TILE_SIZE, WIN)
 
         player.update_CurrentLevel(level_1)
 
@@ -60,7 +60,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_1.draw_level()
                 player.update_CurrentLevel(level_1)
@@ -81,7 +81,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_1).draw(WIN)
 
-                player.update(WIN, level_1) # hard-coded for now
+                player.update(WIN, level_1) 
 
                 
 
@@ -98,7 +98,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_2.draw_level()
                 player.update_CurrentLevel(level_2)
@@ -119,7 +119,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_2).draw(WIN)
 
-                player.update(WIN, level_2) # hard-coded for now
+                player.update(WIN, level_2) 
 
                 self.check_events()
 
@@ -133,7 +133,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_3.draw_level()
                 player.update_CurrentLevel(level_3)
@@ -154,7 +154,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_3).draw(WIN)
 
-                player.update(WIN, level_3) # hard-coded for now
+                player.update(WIN, level_3) 
 
                 self.check_events()
 
@@ -168,7 +168,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_4.draw_level()
                 player.update_CurrentLevel(level_4)
@@ -189,7 +189,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_4).draw(WIN)
 
-                player.update(WIN, level_4) # hard-coded for now
+                player.update(WIN, level_4) 
 
                 self.check_events()
 
@@ -203,7 +203,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_5.draw_level()
                 player.update_CurrentLevel(level_5)
@@ -224,7 +224,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_5).draw(WIN)
 
-                player.update(WIN, level_5) # hard-coded for now
+                player.update(WIN, level_5) 
 
                 self.check_events()
 
@@ -238,7 +238,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_6.draw_level()
                 player.update_CurrentLevel(level_6)
@@ -259,7 +259,7 @@ class Game():
                 # EXIT
                 Level.get_ExitGroup(level_6).draw(WIN)
 
-                player.update(WIN, level_6) # hard-coded for now
+                player.update(WIN, level_6) 
 
                 self.check_events()
 

@@ -1,7 +1,7 @@
-# Freddy Takes on College (FTOC)
+# Lost in the Mountains
 
 ## Project Description
-Freddy Takes on College Break (FTOC) is a 2D platformer game about helping the University of Wisconsin — River Falls mascot (UWRF), Freddy Falcon during his summer vacation. However, he got lost on a trip and needs your help to find him. There are different levels with various challenges that you will have to complete. Along the way you will have to take on enemies, avoid falling in lava, and jump gaps of varying length. Once you complete all the levels, you will find Freddy! 
+Lost in the Mountains is a 2D platformer game about helping an adventurer who took a trip to the mountains for what was supposed to be a fun vacation. However, she got lost and needs your help to escape. There are different levels with various challenges that you will have to complete. Along the way you will have to take on enemies, avoid falling in lava, and jump gaps of varying length. Once you complete all the levels, you have helped the adventurer escape the mountains! 
 
 ## Software 
 It is coded in Python with the help of various modules such as Pygame. Also, Visual Studio Code is being used as our IDE.
