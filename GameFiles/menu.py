@@ -32,7 +32,10 @@ class MainMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
+            #self.menuBG = pygame.image.load('GameFiles/Assets/menuBackground.png')
+            #self.menuBG = pygame.transform.scale(self.menuBG, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
+            #self.game.display.fill(self.game.BLACK)
+            self.game.display.blit(Settings.MENU_BG, (0, 0))
             self.game.draw_text('Lost in the Mountains!', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 20)
             self.game.draw_text("Level Selection", 20, self.levelsx, self.levelsy)
             self.game.draw_text("Controls", 20, self.optionsx, self.optionsy)
@@ -76,7 +79,8 @@ class ControlsMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
+            #self.game.display.fill(self.game.BLACK)
+            self.game.display.blit(Settings.MENU_BG, (0, 0))
             self.game.draw_text('Game Controls', 40, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 60)
             self.game.draw_text('Menu', 30, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-30)
             self.game.draw_text('Backspace = Previous Menu', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-15)
@@ -136,7 +140,8 @@ class LevelSelection(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
+            #self.game.display.fill(self.game.BLACK)
+            self.game.display.blit(Settings.MENU_BG, (0, 0))
 
             self.game.draw_text('Level Selection', 30, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/3)
 

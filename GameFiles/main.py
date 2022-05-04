@@ -2,7 +2,6 @@
 The file main.py holds the main method for the 'Lost in the Mountains' Game. 
 """
 
-import pygame
 from game import Game
 
 def main():

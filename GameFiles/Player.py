@@ -36,9 +36,9 @@ class Player():
         self.jump_right = pygame.transform.scale(self.jump_right, (image_width, image_height))
         self.jump_left = pygame.transform.flip(self.jump_right, True, False)
 
-        #self.fall_right = pygame.image.load('GameFiles/Assets/character_femaleAdventurer_fall.png')
-        #self.fall_right = pygame.transform.scale(self.fall_right, (image_width, image_height))
-        #self.fall_left = pygame.transform.flip(self.fall_right, True, False) 
+        self.fall_right = pygame.image.load('GameFiles/Assets/character_femaleAdventurer_fall.png')
+        self.fall_right = pygame.transform.scale(self.fall_right, (image_width, image_height))
+        self.fall_left = pygame.transform.flip(self.fall_right, True, False) 
 
         # set starter image to idle
         self.image = self.idle_image
@@ -46,7 +46,7 @@ class Player():
         # create a rectangle around the player for use in collision detection
         self.rect = self.image.get_rect()
         self.width = self.image.get_width()
-        self.height = self.image.get_height()
+        self.height = self.image.get_height() 
         #super().__init__(x, y, speed, imagePath)
         self.rect.x = x
         self.rect.y = y
@@ -54,6 +54,7 @@ class Player():
 
         # variables to detect whether the player is jumping or in the air
         self.jumping = False
+        self.in_air = True
 
         # variable that represents which direction the player is moving (positive value means moving right while negative means left)
         self.direction = 0 
@@ -74,12 +75,13 @@ class Player():
         key = pygame.key.get_pressed()
 
         # handle jumping
-        if key[pygame.K_SPACE] and self.jumping == False:
+        if key[pygame.K_SPACE] and self.jumping == False and self.in_air == False:
             self.vel_y = -15
             self.jumping = True
 
         if key[pygame.K_SPACE] == False:
             self.jumping = False
+            #self.image = self.idle_image
 
         # handle moving left
         if key[pygame.K_LEFT]:
@@ -126,6 +128,7 @@ class Player():
             self.image = self.jump_left
 
         # check for collision
+        self.in_air = True
         for tile in level.tile_list:
             # check for collison in x direction
             if tile[1].colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
@@ -141,10 +144,15 @@ class Player():
                 elif self.vel_y >= 0:
                     dy = tile[1].top - self.rect.bottom
                     self.vel_y = 0
+                    self.in_air = False
 
         # check for enemy collision
         if pygame.sprite.spritecollide(self, Level.get_EnemyGroup(self.currentLevel), False):
             Settings.GAME_OVER = -1
+
+        # check for exit collision 
+        if pygame.sprite.spritecollide(self, Level.get_ExitGroup(self.currentLevel), False):
+            Settings.GAME_OVER = 1 # positive means level is won
 
         # check for lava collision 
         if pygame.sprite.spritecollide(self, Level.get_LavaGroup(self.currentLevel), False):
@@ -168,7 +176,18 @@ class Player():
                 # check if above platform
                 elif abs((self.rect.bottom + dy) - platform.rect.top) < collision_threshold:
                     self.rect.bottom = platform.rect.top - 1
+                    self.in_air = False
                     dy = 0
+                
+                # move sideways with the platform
+                if platform.move_x != 0:
+                    self.rect.x += platform.move_direction
+
+        # down animation handler
+        if dy > 0 and (self.direction == 1 or self.direction == 0) and self.in_air == True:
+            self.image = self.fall_right
+        if dy > 0 and self.direction == -1 and self.in_air == True:
+            self.image = self.fall_left
 
         # update coordinates
         self.rect.x += dx
@@ -176,9 +195,10 @@ class Player():
 
         # handle falling back onto the ground after jumping
         if dy == 0 and (self.direction == 1 or self.direction == 0) and self.jumping == True:
-                self.image = self.idle_image
+            self.image = self.idle_image
         if dy == 0 and self.direction == -1 and self.jumping == True:
             self.image = pygame.transform.flip(self.idle_image, True, False)
 
         # draw player on screen
         window.blit(self.image, self.rect)
+        #pygame.draw.rect(window, (255, 255, 255), self.rect, 2)

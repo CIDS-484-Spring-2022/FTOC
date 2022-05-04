@@ -7,13 +7,14 @@ from Level import Level
 from Player import Player
 
 mAdventurerPath = ""
-BG_IMAGE = pygame.image.load('GameFiles/Assets/GreenHillsBG.png')
-BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
+#BG_IMAGE = pygame.image.load('GameFiles/Assets/GreenHillsBG.png')
+#BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
 
 #tile_size = 50
 
 WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
 pygame.display.set_caption("Lost in the Mountains!")
+
 
 
 
@@ -59,7 +60,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_1.draw_level()
                 player.update_CurrentLevel(level_1)
@@ -97,7 +98,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_2.draw_level()
                 player.update_CurrentLevel(level_2)
@@ -132,7 +133,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_3.draw_level()
                 player.update_CurrentLevel(level_3)
@@ -167,7 +168,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_4.draw_level()
                 player.update_CurrentLevel(level_4)
@@ -202,7 +203,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_5.draw_level()
                 player.update_CurrentLevel(level_5)
@@ -237,7 +238,7 @@ class Game():
             while self.playing:
                 clock.tick(Settings.FPS)
 
-                WIN.blit(BG_IMAGE, (0, 0))
+                WIN.blit(Settings.GAME_BG, (0, 0))
                 #draw_grid()
                 level_6.draw_level()
                 player.update_CurrentLevel(level_6)

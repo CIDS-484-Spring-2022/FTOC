@@ -77,20 +77,24 @@ class Level():
                 if tile == 6:
                     lava = Lava(col_num * tile_size, row_num * tile_size + (tile_size // 2))
                     self.lava_group.add(lava)
-                # exit door
+                # exit door frame
                 if tile == 7:
-                    exit = Exit(col_num * tile_size, row_num * tile_size - (tile_size // 2))
+                    exit = Exit(col_num * tile_size, row_num * tile_size - (tile_size // 2), 0)
+                    self.exit_group.add(exit)
+                # exit door top
+                if tile == 8:
+                    exit = Exit(col_num * tile_size, row_num * tile_size - int(tile_size * 0.65), 1)
                     self.exit_group.add(exit)
                 # horizontal moving platform
-                if tile == 8:
+                if tile == 9:
                     platform = Platform(col_num * tile_size, row_num * tile_size, 1, 0)
                     self.platform_group.add(platform)
                 # vertical moving platform
-                if tile == 9:
+                if tile == 10:
                     platform = Platform(col_num * tile_size, row_num * tile_size, 0, 1)
                     self.platform_group.add(platform)
                 # slime enemy
-                if(tile == 10):
+                if(tile == 11):
                     enemy = Enemy(col_num * tile_size, row_num * tile_size + 27)
                     self.enemy_group.add(enemy)
                 

@@ -9,10 +9,13 @@ import Settings
 
 class Exit(pygame.sprite.Sprite):
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, exit_top):
         pygame.sprite.Sprite.__init__(self)
 
-        image = pygame.image.load('GameFiles/Assets/door_openMid.png')
+        if(exit_top == 0):
+            image = pygame.image.load('GameFiles/Assets/door_openMid.png')
+        else:
+            image = pygame.image.load('GameFiles/Assets/door_openTop.png')
         self.image = pygame.transform.scale(image, (Settings.TILE_SIZE, int(Settings.TILE_SIZE * 1.5))) 
         self.rect = self.image.get_rect()
         self.rect.x = x
