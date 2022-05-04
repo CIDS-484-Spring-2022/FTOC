@@ -10,7 +10,7 @@ class Menu():
         self.offset = - 100
 
     def draw_cursor(self):
-        self.game.draw_text('[', 15, self.cursor_rect.x, self.cursor_rect.y)
+        self.game.draw_text('[', 30, self.cursor_rect.x + self.offset, self.cursor_rect.y)
 
     def blit_screen(self):
         self.game.window.blit(self.game.display, (0, 0))
@@ -21,8 +21,8 @@ class MainMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
         self.state = "Levels"
-        self.levelsx, self.levelsy = self.mid_w, self.mid_h + 30
-        self.optionsx, self.optionsy = self.mid_w, self.mid_h + 50
+        self.levelsx, self.levelsy = self.mid_w, self.mid_h + 20
+        self.optionsx, self.optionsy = self.mid_w, self.mid_h + 80
         self.cursor_rect.midtop = (self.levelsx + self.offset, self.levelsy)
         pygame.display.set_caption("Lost in the Mountains")
 
@@ -36,9 +36,8 @@ class MainMenu(Menu):
             #self.menuBG = pygame.transform.scale(self.menuBG, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
             #self.game.display.fill(self.game.BLACK)
             self.game.display.blit(Settings.MENU_BG, (0, 0))
-            self.game.draw_text('Lost in the Mountains!', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 20)
-            self.game.draw_text("Level Selection", 20, self.levelsx, self.levelsy)
-            self.game.draw_text("Controls", 20, self.optionsx, self.optionsy)
+            self.game.draw_text("Level Selection", 50, self.levelsx, self.levelsy)
+            self.game.draw_text("Controls", 50, self.optionsx, self.optionsy)
             self.draw_cursor()
             self.blit_screen()
 
@@ -81,17 +80,17 @@ class ControlsMenu(Menu):
             self.check_input()
             #self.game.display.fill(self.game.BLACK)
             self.game.display.blit(Settings.MENU_BG, (0, 0))
-            self.game.draw_text('Game Controls', 40, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 60)
-            self.game.draw_text('Menu', 30, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-30)
-            self.game.draw_text('Backspace = Previous Menu', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-15)
-            self.game.draw_text('Enter = Select', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2)
-            self.game.draw_text('Up Arrow = Move Up', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+15)
-            self.game.draw_text('Down Arrow = Move Down', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+30)
-            self.game.draw_text('Game', 30, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+45)
-            self.game.draw_text('Right Arrow = Move Right', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+60)
-            self.game.draw_text('Left Arrow = Move Left', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+75)
-            self.game.draw_text('Space Bar = Jump', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+90)
-            self.game.draw_text('Esc = Main Menu', 12, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+105)
+            self.game.draw_text('Game Controls', 40, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 150)
+            self.game.draw_text('Menu', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-85)
+            self.game.draw_text('Backspace = Previous Menu', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-50)
+            self.game.draw_text('Enter = Select', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-25)
+            self.game.draw_text('Up Arrow = Move Up', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2)
+            self.game.draw_text('Down Arrow = Move Down', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+25)
+            self.game.draw_text('Game', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+50)
+            self.game.draw_text('Right Arrow = Move Right', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+85)
+            self.game.draw_text('Left Arrow = Move Left', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+110)
+            self.game.draw_text('Space Bar = Jump', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+135)
+            self.game.draw_text('Esc = Main Menu', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+160)
 
 
 
@@ -107,13 +106,13 @@ class LevelSelection(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
         self.state= "Level1"
-        self.level1x, self.level1y = self.mid_w, self.mid_h + 30
+        self.level1x, self.level1y = self.mid_w, self.mid_h - 40
         self.start = False
-        self.level2x, self.level2y = self.mid_w, self.mid_h + 50
-        self.level3x, self.level3y = self.mid_w, self.mid_h + 70
-        self.level4x, self.level4y = self.mid_w, self.mid_h + 90
-        self.level5x, self.level5y = self.mid_w, self.mid_h + 110
-        self.level6x, self.level6y = self.mid_w, self.mid_h + 130
+        self.level2x, self.level2y = self.mid_w, self.mid_h
+        self.level3x, self.level3y = self.mid_w, self.mid_h + 40
+        self.level4x, self.level4y = self.mid_w, self.mid_h + 80
+        self.level5x, self.level5y = self.mid_w, self.mid_h + 120
+        self.level6x, self.level6y = self.mid_w, self.mid_h + 160
         self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
 
     def check_input(self):
@@ -143,14 +142,14 @@ class LevelSelection(Menu):
             #self.game.display.fill(self.game.BLACK)
             self.game.display.blit(Settings.MENU_BG, (0, 0))
 
-            self.game.draw_text('Level Selection', 30, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/3)
+            self.game.draw_text('Level Selection', 75, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/3)
 
-            self.game.draw_text('Level 1', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+30)
-            self.game.draw_text('Level 2', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+50)
-            self.game.draw_text('Level 3', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+70)
-            self.game.draw_text('Level 4', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+90)
-            self.game.draw_text('Level 5', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+110)
-            self.game.draw_text('Level 6', 20, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+130)
+            self.game.draw_text('Level 1', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2-40)
+            self.game.draw_text('Level 2', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2)
+            self.game.draw_text('Level 3', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+40)
+            self.game.draw_text('Level 4', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+80)
+            self.game.draw_text('Level 5', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+120)
+            self.game.draw_text('Level 6', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+160)
             self.draw_cursor()
             self.blit_screen()
 
