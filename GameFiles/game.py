@@ -16,10 +16,6 @@ WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
 pygame.display.set_caption("Lost in the Mountains!")
 
 
-
-
-
-
 class Game():
     def __init__(self):
         pygame.init()
@@ -67,7 +63,10 @@ class Game():
 
                 # ENEMIES
                 enemy_group = Level.get_EnemyGroup(level_1)
-                enemy_group.update()
+
+                if Settings.GAME_OVER == 0:                
+                    enemy_group.update()
+                    
                 enemy_group.draw(WIN)
 
                 # Moving Platforms
