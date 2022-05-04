@@ -5,6 +5,7 @@ platforms. Also, contains a function to control which way the platform moves.
 """
 
 import pygame
+import Settings
 
 class Platform(pygame.sprite.Sprite):
 
@@ -13,7 +14,7 @@ class Platform(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         image = pygame.image.load('GameFiles/Assets/grassHalf.png')
-        self.image = pygame.transform.scale(image, (50, 50)) # 50 is tile size
+        self.image = pygame.transform.scale(image, (Settings.TILE_SIZE, Settings.TILE_SIZE)) # 50 is tile size
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y

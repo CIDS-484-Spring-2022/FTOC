@@ -10,7 +10,7 @@ mAdventurerPath = ""
 BG_IMAGE = pygame.image.load('GameFiles/Assets/GreenHillsBG.png')
 BG_IMAGE = pygame.transform.scale(BG_IMAGE, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
 
-tile_size = 50
+#tile_size = 50
 
 WIN = pygame.display.set_mode((Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
 pygame.display.set_caption("Lost in the Mountains!")
@@ -35,10 +35,10 @@ class Game():
         self.curr_menu = self.main_menu
 
     def draw_grid():
-        for line in range(0, (int(Settings.WINDOW_HEIGHT/tile_size))):
-            pygame.draw.line(WIN, (255, 255, 255), (0, line * tile_size), (Settings.WINDOW_WIDTH, line * tile_size))
-        for line in range(0, (int(Settings.WINDOW_WIDTH/tile_size))):
-            pygame.draw.line(WIN, (255, 255, 255), (line * tile_size, 0), (line * tile_size, Settings.WINDOW_HEIGHT))
+        for line in range(0, (int(Settings.WINDOW_HEIGHT/Settings.TILE_SIZE))):
+            pygame.draw.line(WIN, (255, 255, 255), (0, line * Settings.TILE_SIZE), (Settings.WINDOW_WIDTH, line * Settings.TILE_SIZE))
+        for line in range(0, (int(Settings.WINDOW_WIDTH/Settings.TILE_SIZE))):
+            pygame.draw.line(WIN, (255, 255, 255), (line * Settings.TILE_SIZE, 0), (line * Settings.TILE_SIZE, Settings.WINDOW_HEIGHT))
 
     def game_loop(self):
 
@@ -46,12 +46,12 @@ class Game():
         self.playing = True
     
         player = Player(100, Settings.WINDOW_HEIGHT-130)
-        level_1 = Level(Level_Data.level1, tile_size, WIN)
-        level_2 = Level(Level_Data.level2, tile_size, WIN)
-        level_3 = Level(Level_Data.level3, tile_size, WIN)
-        level_4 = Level(Level_Data.level4, tile_size, WIN)
-        level_5 = Level(Level_Data.level5, tile_size, WIN)
-        level_6 = Level(Level_Data.level6, tile_size, WIN)
+        level_1 = Level(Level_Data.level1, Settings.TILE_SIZE, WIN)
+        level_2 = Level(Level_Data.level2, Settings.TILE_SIZE, WIN)
+        level_3 = Level(Level_Data.level3, Settings.TILE_SIZE, WIN)
+        level_4 = Level(Level_Data.level4, Settings.TILE_SIZE, WIN)
+        level_5 = Level(Level_Data.level5, Settings.TILE_SIZE, WIN)
+        level_6 = Level(Level_Data.level6, Settings.TILE_SIZE, WIN)
 
         player.update_CurrentLevel(level_1)
 

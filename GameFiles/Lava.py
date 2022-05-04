@@ -4,6 +4,7 @@ scaling the image, and creating a rectangle with x and y values to be used in co
 """
 
 import pygame
+import Settings
 
 class Lava(pygame.sprite.Sprite):
 
@@ -12,7 +13,7 @@ class Lava(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         image = pygame.image.load('GameFiles/Assets/liquidLavaTop_mid.png')
-        self.image = pygame.transform.scale(image, (50, 50 // 2)) # 50 is tile size
+        self.image = pygame.transform.scale(image, (Settings.TILE_SIZE, Settings.TILE_SIZE // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y

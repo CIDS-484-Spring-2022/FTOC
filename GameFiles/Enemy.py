@@ -5,6 +5,7 @@ enemy. Also, contains a function to control enemy movement.
 """
 
 import pygame
+import Settings
 
 class Enemy(pygame.sprite.Sprite):
     
@@ -13,7 +14,7 @@ class Enemy(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = pygame.image.load('GameFiles/Assets/blockerMad.png')
-        self.image = pygame.transform.scale(self.image, (25, 25))
+        self.image = pygame.transform.scale(self.image, (Settings.TILE_SIZE // 2, Settings.TILE_SIZE // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
