@@ -90,7 +90,7 @@ class ControlsMenu(Menu):
             self.game.draw_text('Right Arrow = Move Right', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+85)
             self.game.draw_text('Left Arrow = Move Left', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+110)
             self.game.draw_text('Space Bar = Jump', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+135)
-            self.game.draw_text('Esc = Main Menu', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+160)
+            self.game.draw_text('Backspace = Main Menu', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+160)
 
 
 
@@ -105,7 +105,7 @@ class ControlsMenu(Menu):
 class LevelSelection(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
-        self.state= "Level1"
+        self.state = "Level1"
         self.level1x, self.level1y = self.mid_w, self.mid_h - 40
         self.start = False
         self.level2x, self.level2y = self.mid_w, self.mid_h

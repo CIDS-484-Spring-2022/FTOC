@@ -15,6 +15,10 @@ def main():
         if g.levels.start:
             g.curr_menu.run_display = False
             g.game_loop()
+
+           # if(Settings.GAME_OVER == 1):
+           #     g.game_loop()
+
     
 # Make sure main() only runs from this file directly
 if __name__ == "__main__":
