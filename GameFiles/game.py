@@ -50,10 +50,9 @@ class Game():
         level_5 = Level(Level_Data.level5, Settings.TILE_SIZE, WIN)
         level_6 = Level(Level_Data.level6, Settings.TILE_SIZE, WIN)
 
-        player.update_CurrentLevel(level_1)
+        while self.playing:
 
-        if self.levels.state == 'Level1':
-            while self.playing:
+            if self.levels.state == 'Level1':
                 clock.tick(Settings.FPS)
 
                 WIN.blit(Settings.GAME_BG, (0, 0))
@@ -86,15 +85,23 @@ class Game():
 
                 self.check_events()
 
+                pygame.display.update()
+
                 if self.BACK_KEY == True:
                     self.curr_menu.display_menu()
                     self.playing = False
                     self.levels.start = False 
 
-                pygame.display.update()
+                if Settings.GAME_OVER == 1:
+                    self.levels.state = 'Level2'
+                    player.reset(100, Settings.WINDOW_HEIGHT-130)
+                    Settings.GAME_OVER = 0
 
-        elif self.levels.state == 'Level2':        
-            while self.playing:
+
+
+
+            elif self.levels.state == 'Level2':        
+
                 clock.tick(Settings.FPS)
 
                 WIN.blit(Settings.GAME_BG, (0, 0))
@@ -112,7 +119,7 @@ class Game():
                 platform_group.update()
                 platform_group.draw(WIN)
 
-                 # LAVA
+                # LAVA
                 Level.get_LavaGroup(level_2).draw(WIN)
 
                 # EXIT
@@ -127,9 +134,14 @@ class Game():
                     self.playing = False
                     self.levels.start = False 
 
+                if Settings.GAME_OVER == 1:
+                    self.levels.state = 'Level3'
+                    player.reset(100, Settings.WINDOW_HEIGHT-130)
+                    Settings.GAME_OVER = 0
+
                 pygame.display.update()
-        elif self.levels.state == 'Level3':        
-            while self.playing:
+
+            elif self.levels.state == 'Level3':        
                 clock.tick(Settings.FPS)
 
                 WIN.blit(Settings.GAME_BG, (0, 0))
@@ -147,7 +159,7 @@ class Game():
                 platform_group.update()
                 platform_group.draw(WIN)
 
-                 # LAVA
+                # LAVA
                 Level.get_LavaGroup(level_3).draw(WIN)
 
                 # EXIT
@@ -162,9 +174,14 @@ class Game():
                     self.playing = False
                     self.levels.start = False 
 
+                if Settings.GAME_OVER == 1:
+                    self.levels.state = 'Level4'
+                    player.reset(100, Settings.WINDOW_HEIGHT-130)
+                    Settings.GAME_OVER = 0
+
                 pygame.display.update()
-        elif self.levels.state == 'Level4':        
-            while self.playing:
+
+            elif self.levels.state == 'Level4':        
                 clock.tick(Settings.FPS)
 
                 WIN.blit(Settings.GAME_BG, (0, 0))
@@ -182,7 +199,7 @@ class Game():
                 platform_group.update()
                 platform_group.draw(WIN)
 
-                 # LAVA
+                # LAVA
                 Level.get_LavaGroup(level_4).draw(WIN)
 
                 # EXIT
@@ -197,9 +214,13 @@ class Game():
                     self.playing = False
                     self.levels.start = False 
 
+                if Settings.GAME_OVER == 1:
+                    self.levels.state = 'Level5'
+                    player.reset(100, Settings.WINDOW_HEIGHT-130)
+                    Settings.GAME_OVER = 0
+
                 pygame.display.update()
-        elif self.levels.state == 'Level5':        
-            while self.playing:
+            elif self.levels.state == 'Level5':        
                 clock.tick(Settings.FPS)
 
                 WIN.blit(Settings.GAME_BG, (0, 0))
@@ -217,7 +238,7 @@ class Game():
                 platform_group.update()
                 platform_group.draw(WIN)
 
-                 # LAVA
+                # LAVA
                 Level.get_LavaGroup(level_5).draw(WIN)
 
                 # EXIT
@@ -232,9 +253,13 @@ class Game():
                     self.playing = False
                     self.levels.start = False 
 
+                if Settings.GAME_OVER == 1:
+                    self.levels.state = 'Level6'
+                    player.reset(100, Settings.WINDOW_HEIGHT-130)
+                    Settings.GAME_OVER = 0
+
                 pygame.display.update()
-        elif self.levels.state == 'Level6':        
-            while self.playing:
+            elif self.levels.state == 'Level6':        
                 clock.tick(Settings.FPS)
 
                 WIN.blit(Settings.GAME_BG, (0, 0))
@@ -252,7 +277,7 @@ class Game():
                 platform_group.update()
                 platform_group.draw(WIN)
 
-                 # LAVA
+                # LAVA
                 Level.get_LavaGroup(level_6).draw(WIN)
 
                 # EXIT
@@ -267,10 +292,11 @@ class Game():
                     self.playing = False
                     self.levels.start = False 
 
-                pygame.display.update()
+            pygame.display.update()
+
 
         #pygame.quit()
-        
+    
         #self.curr_menu.display_menu()
 
     def check_events(self):
