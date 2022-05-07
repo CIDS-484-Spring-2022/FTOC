@@ -12,13 +12,20 @@ from Level import Level
 class Player():
 
     # constructor
-    def __init__(self, x, y):
+    def __init__(self, x, y, jump_fx):
         self.reset(x, y, image_height=80, image_width=40)
+        self.jump_fx = jump_fx
         
-    
     # Method to set the current level the player is on
     def update_CurrentLevel(self, level: Level):
         self.currentLevel = level
+
+    # Method to update number of deaths
+    def update_Deaths(self, update):
+        if update == 1:
+            Settings.NUM_DEATHS += 1
+        else:
+            Settings.NUM_DEATHS = 0
 
     # method that updates the player as the user interacts with the level
     def update(self, window, level: Level):
@@ -34,6 +41,7 @@ class Player():
 
             # handle jumping
             if key[pygame.K_SPACE] and self.jumping == False and self.in_air == False:
+                self.jump_fx.play()
                 self.vel_y = -15
                 self.jumping = True
 
@@ -106,6 +114,7 @@ class Player():
 
             # check for enemy collision
             if pygame.sprite.spritecollide(self, Level.get_EnemyGroup(self.currentLevel), False):
+                self.update_Deaths(1)
                 Settings.GAME_OVER = -1
 
             # check for exit collision 
@@ -114,6 +123,7 @@ class Player():
 
             # check for lava collision 
             if pygame.sprite.spritecollide(self, Level.get_LavaGroup(self.currentLevel), False):
+                self.update_Deaths(1)
                 Settings.GAME_OVER = -1
 
             # check for moving platform collision
@@ -185,6 +195,7 @@ class Player():
             self.images_right.append(img_right)
             self.images_left.append(img_left)
 
+        # load image for when playet dies
         self.dead_image = pygame.image.load("GameFiles/Assets/ghost.png")
 
         # load image for when the player is idle
@@ -217,4 +228,4 @@ class Player():
         self.in_air = True
 
         # variable that represents which direction the player is moving (positive value means moving right while negative means left)
-        self.direction = 0 
+        self.direction = 1 

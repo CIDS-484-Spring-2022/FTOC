@@ -1,3 +1,7 @@
+"""
+The menu.py file contains methods that create the menu screens for the 'Lost in the Mountains' game.
+"""
+
 import pygame
 import Settings
 
@@ -32,9 +36,6 @@ class MainMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            #self.menuBG = pygame.image.load('GameFiles/Assets/menuBackground.png')
-            #self.menuBG = pygame.transform.scale(self.menuBG, (Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT))
-            #self.game.display.fill(self.game.BLACK)
             self.game.display.blit(Settings.MENU_BG, (0, 0))
             self.game.draw_text("Level Selection", 50, self.levelsx, self.levelsy)
             self.game.draw_text("Controls", 50, self.optionsx, self.optionsy)
@@ -78,7 +79,6 @@ class ControlsMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            #self.game.display.fill(self.game.BLACK)
             self.game.display.blit(Settings.MENU_BG, (0, 0))
             self.game.draw_text('Game Controls', 40, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2 - 150)
             self.game.draw_text('Menu', 50, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2-85)
@@ -91,8 +91,6 @@ class ControlsMenu(Menu):
             self.game.draw_text('Left Arrow = Move Left', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+110)
             self.game.draw_text('Space Bar = Jump', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+135)
             self.game.draw_text('Backspace = Main Menu', 25, Settings.WINDOW_WIDTH / 2, Settings.WINDOW_HEIGHT / 2+160)
-
-
 
             self.draw_cursor()
             self.blit_screen()
@@ -113,6 +111,8 @@ class LevelSelection(Menu):
         self.level4x, self.level4y = self.mid_w, self.mid_h + 80
         self.level5x, self.level5y = self.mid_w, self.mid_h + 120
         self.level6x, self.level6y = self.mid_w, self.mid_h + 160
+        self.level7x, self.level7y = self.mid_w, self.mid_h + 200
+        self.level8x, self.level8y = self.mid_w, self.mid_h + 240
         self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
 
     def check_input(self):
@@ -133,13 +133,16 @@ class LevelSelection(Menu):
                 self.game.playing = True
             elif self.state == "Level6":
                 self.game.playing = True
+            elif self.state == "Level7":
+                self.game.playing = True
+            elif self.state == "Level8":
+                self.game.playing = True
 
     def display_menu(self):
         self.run_display = True
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            #self.game.display.fill(self.game.BLACK)
             self.game.display.blit(Settings.MENU_BG, (0, 0))
 
             self.game.draw_text('Level Selection', 75, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/3)
@@ -150,6 +153,8 @@ class LevelSelection(Menu):
             self.game.draw_text('Level 4', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+80)
             self.game.draw_text('Level 5', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+120)
             self.game.draw_text('Level 6', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+160)
+            self.game.draw_text('Level 7', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+200)
+            self.game.draw_text('Level 8', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+240)
             self.draw_cursor()
             self.blit_screen()
 
@@ -171,13 +176,19 @@ class LevelSelection(Menu):
                 self.cursor_rect.midtop = (self.level6x + self.offset, self.level6y)
                 self.state = 'Level6'
             elif self.state == 'Level6':
+                self.cursor_rect.midtop = (self.level7x + self.offset, self.level7y)
+                self.state = 'Level7'
+            elif self.state == 'Level7':
+                self.cursor_rect.midtop = (self.level8x + self.offset, self.level8y)
+                self.state = 'Level8'
+            elif self.state == 'Level8':
                 self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
                 self.state = 'Level1'
 
         elif self.game.UP_KEY:
             if self.state == 'Level1':
-                self.cursor_rect.midtop = (self.level6x + self.offset, self.level6y)
-                self.state = 'Level6'
+                self.cursor_rect.midtop = (self.level8x + self.offset, self.level8y)
+                self.state = 'Level8'
             elif self.state == 'Level2':
                 self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
                 self.state = 'Level1'
@@ -193,6 +204,12 @@ class LevelSelection(Menu):
             elif self.state == 'Level6':
                 self.cursor_rect.midtop = (self.level5x + self.offset, self.level5y)
                 self.state = 'Level5'
+            elif self.state == 'Level7':
+                self.cursor_rect.midtop = (self.level6x + self.offset, self.level6y)
+                self.state = 'Level6'
+            elif self.state == 'Level8':
+                self.cursor_rect.midtop = (self.level7x + self.offset, self.level7y)
+                self.state = 'Level7'
 
         elif self.game.START_KEY:
             if self.state == 'Level1':
@@ -211,6 +228,12 @@ class LevelSelection(Menu):
                 self.run_display = False
                 self.start = True
             elif self.state == 'Level6':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level7':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level8':
                 self.run_display = False
                 self.start = True
 
