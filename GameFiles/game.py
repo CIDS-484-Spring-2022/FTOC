@@ -69,6 +69,9 @@ class Game():
         level_6 = Level(Level_Data.level6, Settings.TILE_SIZE, WIN)
         level_7 = Level(Level_Data.level7, Settings.TILE_SIZE, WIN)
         level_8 = Level(Level_Data.level8, Settings.TILE_SIZE, WIN)
+        level_9 = Level(Level_Data.level9, Settings.TILE_SIZE, WIN)
+        level_10 = Level(Level_Data.level10, Settings.TILE_SIZE, WIN)
+
 
         while self.playing:
 
@@ -425,6 +428,86 @@ class Game():
                 Level.get_ExitGroup(level_8).draw(WIN)
 
                 player.update(WIN, level_8) 
+
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
+                pygame.display.update()
+            elif self.levels.state == 'Level9':        
+                clock.tick(Settings.FPS)
+
+                WIN.blit(Settings.GAME_BG, (0, 0))
+                #draw_grid()
+                level_9.draw_level()
+                player.update_CurrentLevel(level_9)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_9)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_9)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                # LAVA
+                Level.get_LavaGroup(level_9).draw(WIN)
+
+                # Death counter
+                self.draw_DeathCounter('X ' + str(Settings.NUM_DEATHS), Settings.TILE_SIZE - 10, 5)
+                ghost_score = pygame.image.load("GameFiles/Assets/deathCounterIcon3.png")
+                ghost_score = pygame.transform.scale(ghost_score, (int(Settings.TILE_SIZE // 1.5), int(Settings.TILE_SIZE // 1.5)))
+                WIN.blit(ghost_score, (3, 5))
+
+                # EXIT
+                Level.get_ExitGroup(level_9).draw(WIN)
+
+                player.update(WIN, level_9) 
+
+                self.check_events()
+
+                if self.BACK_KEY == True:
+                    self.curr_menu.display_menu()
+                    self.playing = False
+                    self.levels.start = False 
+
+                pygame.display.update()
+            elif self.levels.state == 'Level10':        
+                clock.tick(Settings.FPS)
+
+                WIN.blit(Settings.GAME_BG, (0, 0))
+                #draw_grid()
+                level_10.draw_level()
+                player.update_CurrentLevel(level_10)
+
+                # ENEMIES
+                enemy_group = Level.get_EnemyGroup(level_10)
+                enemy_group.update()
+                enemy_group.draw(WIN)
+
+                # Moving Platforms
+                platform_group = Level.get_PlatformGroup(level_10)
+                platform_group.update()
+                platform_group.draw(WIN)
+
+                # LAVA
+                Level.get_LavaGroup(level_10).draw(WIN)
+
+                # Death counter
+                self.draw_DeathCounter('X ' + str(Settings.NUM_DEATHS), Settings.TILE_SIZE - 10, 5)
+                ghost_score = pygame.image.load("GameFiles/Assets/deathCounterIcon3.png")
+                ghost_score = pygame.transform.scale(ghost_score, (int(Settings.TILE_SIZE // 1.5), int(Settings.TILE_SIZE // 1.5)))
+                WIN.blit(ghost_score, (3, 5))
+
+                # EXIT
+                Level.get_ExitGroup(level_10).draw(WIN)
+
+                player.update(WIN, level_10) 
 
                 self.check_events()
 

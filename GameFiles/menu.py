@@ -113,6 +113,9 @@ class LevelSelection(Menu):
         self.level6x, self.level6y = self.mid_w, self.mid_h + 160
         self.level7x, self.level7y = self.mid_w, self.mid_h + 200
         self.level8x, self.level8y = self.mid_w, self.mid_h + 240
+        self.level9x, self.level9y = self.mid_w, self.mid_h + 280
+        self.level10x, self.level10y = self.mid_w, self.mid_h + 320
+
         self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
 
     def check_input(self):
@@ -137,6 +140,10 @@ class LevelSelection(Menu):
                 self.game.playing = True
             elif self.state == "Level8":
                 self.game.playing = True
+            elif self.state == "Level9":
+                self.game.playing = True
+            elif self.state == "Level10":
+                self.game.playing = True
 
     def display_menu(self):
         self.run_display = True
@@ -155,6 +162,9 @@ class LevelSelection(Menu):
             self.game.draw_text('Level 6', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+160)
             self.game.draw_text('Level 7', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+200)
             self.game.draw_text('Level 8', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+240)
+            self.game.draw_text('Level 9', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+280)
+            self.game.draw_text('Level 10', 40, Settings.WINDOW_WIDTH/2, Settings.WINDOW_HEIGHT/2+320)
+
             self.draw_cursor()
             self.blit_screen()
 
@@ -182,13 +192,19 @@ class LevelSelection(Menu):
                 self.cursor_rect.midtop = (self.level8x + self.offset, self.level8y)
                 self.state = 'Level8'
             elif self.state == 'Level8':
+                self.cursor_rect.midtop = (self.level9x + self.offset, self.level9y)
+                self.state = 'Level9'
+            elif self.state == 'Level9':
+                self.cursor_rect.midtop = (self.level10x + self.offset, self.level10y)
+                self.state = 'Level10'
+            elif self.state == 'Level10':
                 self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
                 self.state = 'Level1'
 
         elif self.game.UP_KEY:
             if self.state == 'Level1':
-                self.cursor_rect.midtop = (self.level8x + self.offset, self.level8y)
-                self.state = 'Level8'
+                self.cursor_rect.midtop = (self.level10x + self.offset, self.level10y)
+                self.state = 'Level10'
             elif self.state == 'Level2':
                 self.cursor_rect.midtop = (self.level1x + self.offset, self.level1y)
                 self.state = 'Level1'
@@ -210,6 +226,12 @@ class LevelSelection(Menu):
             elif self.state == 'Level8':
                 self.cursor_rect.midtop = (self.level7x + self.offset, self.level7y)
                 self.state = 'Level7'
+            elif self.state == 'Level9':
+                self.cursor_rect.midtop = (self.level8x + self.offset, self.level8y)
+                self.state = 'Level8'
+            elif self.state == 'Level10':
+                self.cursor_rect.midtop = (self.level9x + self.offset, self.level9y)
+                self.state = 'Level9'
 
         elif self.game.START_KEY:
             if self.state == 'Level1':
@@ -236,6 +258,11 @@ class LevelSelection(Menu):
             elif self.state == 'Level8':
                 self.run_display = False
                 self.start = True
-
+            elif self.state == 'Level9':
+                self.run_display = False
+                self.start = True
+            elif self.state == 'Level10':
+                self.run_display = False
+                self.start = True
 
 
